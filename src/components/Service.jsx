@@ -2,10 +2,10 @@ import React from 'react'
 import {AiOutlineArrowRight} from 'react-icons/ai'
 
 
-const Contact = () => {
+const Service = () => {
   return (
-    <div name='support' className='w-full mt-24'> 
-    <div className=' w-full h-[700px] bg-gray-900/90 absolute mix-blend-overlay'></div>
+    <div name='support' className='w-full'> 
+    <div className=' w-full h-[700px] bg-indigo-600/90 absolute mix-blend-overlay'></div>
       <div className='max-w-[1240px] mx-auto text-white relative'>
           <div className='px-4 py-12'>
               <h2 className='text-3xl pt-8 text-slate-300 uppercase text-center'>Support</h2>
@@ -47,4 +47,4 @@ const Contact = () => {
   )
 }
 
-export default Contact
+export default Service
