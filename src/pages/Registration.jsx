@@ -3,6 +3,9 @@ import { useFormik } from "formik";
 import {signUpSchema} from '../Schema/Schema'
 import Layout from '../components/Layout/Layout';
 import { NavLink } from 'react-router-dom';
+import axios from "axios";
+import { useState } from 'react';
+
 
 const initialValues = {
     email: "",
@@ -20,6 +23,35 @@ const Registration = () => {
       },
     });
   console.log("errors",errors);
+  const [success, setSuccess] = useState(null);
+  const [error, setError] = useState(null);
+  const onSubmit = async (values) => {
+    const { confirmPassword, ...data } = values;
+
+    const response = await axios
+      .post("http://localhost:5000/api/v1/register", data)
+      .catch((err) => {
+        if (err && err.response) setError(err.response.data.message);
+        setSuccess(null);
+      });
+
+    if (response && response.data) {
+      setError(null);
+      setSuccess(response.data.message);
+      formik.resetForm();
+    }
+  };
+const formik = useFormik({
+  initialValues: {
+    email: "",
+    password: "",
+  },
+  validateOnBlur: true,
+  onSubmit,
+  signUpSchema: signUpSchema,
+});
+
+
   return (
     <>
     <Layout>
@@ -43,7 +75,7 @@ const Registration = () => {
                   name="email"
                   type="email"
                   autoComplete="email"
-                  value={values.email}
+                  value={values.fullName}
                   onChange={handleChange}
                   onBlur={handleBlur}
                   required
@@ -71,7 +103,9 @@ const Registration = () => {
                   id="password"
                   name="password"
                   type="password"
-                  autoComplete="current-password"
+                  value={values.password}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
                   required
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
