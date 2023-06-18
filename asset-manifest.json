@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Imeet_Projects/static/css/main.31a2909b.css",
+    "main.js": "/Imeet_Projects/static/js/main.187b7526.js",
+    "index.html": "/Imeet_Projects/index.html",
+    "main.31a2909b.css.map": "/Imeet_Projects/static/css/main.31a2909b.css.map",
+    "main.187b7526.js.map": "/Imeet_Projects/static/js/main.187b7526.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.31a2909b.css",
+    "static/js/main.187b7526.js"
+  ]
+}
